@@ -15,6 +15,12 @@ class OrdemServicoController {
     }
   }
 
+  async findByCliente(req, res) {
+    var regex = new RegExp("" + req.query.pesquisa + ".*$", "i");
+    const registros = await os.find({ "cliente.nome": regex });
+    return res.json(registros);
+  }
+
   async store(req, res) {
     const registro = await ordemServico.create(req.body);
     return res.status(201).json(registro);

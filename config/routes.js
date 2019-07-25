@@ -9,18 +9,22 @@ const LoginController = require("../app/controllers/login-controller");
 
 routes.get("/clientes", ClienteController.findAll);
 routes.get("/clientes/:id", ClienteController.findById);
+routes.get("/clientes-pesquisa/", ClienteController.findByNome);
 routes.post("/clientes", ClienteController.store);
 routes.put("/clientes/:id", ClienteController.update);
 routes.delete("/clientes/:id", ClienteController.delete);
 
+
 routes.get("/itens", ItemController.findAll);
 routes.get("/itens/:id", ItemController.findById);
+routes.get("/itens-pesquisa", ItemController.findByDescricao);
 routes.post("/itens", ItemController.store);
 routes.put("/itens/:id", ItemController.update);
 routes.delete("/itens/:id", ItemController.delete);
 
 routes.get("/ordemservicos", OrdemServicoController.findAll);
 routes.get("/ordemservicos/:id", OrdemServicoController.findById);
+routes.get("/ordemservicos-pesquisa", OrdemServicoController.findByCliente);
 routes.post("/ordemservicos", OrdemServicoController.store);
 routes.put("/ordemservicos/:id", OrdemServicoController.update);
 routes.delete("/ordemservicos/:id", OrdemServicoController.delete);
