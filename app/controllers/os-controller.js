@@ -1,13 +1,13 @@
-const ordemServico = require("../models/ordemServico");
+const os = require("../models/os");
 
-class OrdemServicoController {
+class OSController {
   async findAll(req, res) {
-    const registros = await ordemServico.find();
+    const registros = await os.find();
     return res.status(200).json(registros);
   }
 
   async findById(req, res) {
-    const registro = await ordemServico.findById(req.params.id);
+    const registro = await os.findById(req.params.id);
     if (registro) {
       return res.status(200).json(registro);
     } else {
@@ -22,12 +22,12 @@ class OrdemServicoController {
   }
 
   async store(req, res) {
-    const registro = await ordemServico.create(req.body);
+    const registro = await os.create(req.body);
     return res.status(201).json(registro);
   }
 
   async update(req, res) {
-    const registro = await ordemServico.findByIdAndUpdate(
+    const registro = await os.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
@@ -42,7 +42,7 @@ class OrdemServicoController {
   }
 
   async delete(req, res) {
-    const registro = await ordemServico.findByIdAndDelete(req.params.id);
+    const registro = await os.findByIdAndDelete(req.params.id);
     if (registro) {
       return res.status(200).send("Deleted");
     } else {
@@ -51,4 +51,4 @@ class OrdemServicoController {
   }
 }
 
-module.exports = new OrdemServicoController();
+module.exports = new OSController();
