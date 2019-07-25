@@ -39,6 +39,12 @@ class ClienteController {
       return res.status(404).send("Not found");
     }
   }
+
+  async findByNome(req, res) {
+    var regex = new RegExp("" + req.query.pesquisa + ".*$", "i");
+    const registros = await cliente.find({ nome: regex });
+    return res.json(registros);
+  }
 }
 
 module.exports = new ClienteController();
